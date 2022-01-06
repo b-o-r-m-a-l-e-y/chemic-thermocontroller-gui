@@ -1,3 +1,4 @@
+const path = require('path')
 const express = require('express');
 const app = express();
 const port = 3000;
@@ -12,16 +13,12 @@ io.on('connection', (socket) => {
 
 // app.use(express.static(__dirname + '/'))
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html')
+  res.sendFile(path.join(__dirname, 'index.html'))
 })
 
 httpServer.listen(port, () => {
   console.log(`HTTP server listening on ${port}`);
 });
-
-// app.listen(port, () => {
-//   console.log(`App listening at localhost:${port}`)
-// })
 
 const SerialPort = require('serialport');
 const Readline = SerialPort.parsers.Readline;
